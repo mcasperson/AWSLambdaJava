@@ -1,5 +1,6 @@
 package com.matthewcasperson;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class ProxyResponse {
@@ -8,14 +9,20 @@ public class ProxyResponse {
     public final Map<String, String> headers;
 
     public ProxyResponse(final String statusCode, final String body, final Map<String, String> headers) {
-        this.headers = headers;
+        this.headers = headers == null ? new HashMap<>() : headers;
         this.body = body;
         this.statusCode = statusCode;
+        addCORSHeaders();
     }
 
     public ProxyResponse(final String statusCode, final String body) {
-        this.headers = null;
+        this.headers = new HashMap<>();
         this.body = body;
         this.statusCode = statusCode;
+        addCORSHeaders();
+    }
+
+    private void addCORSHeaders() {
+        headers.put("Access-Control-Allow-Origin", "*");
     }
 }
