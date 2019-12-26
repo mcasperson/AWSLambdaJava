@@ -32,8 +32,9 @@ public class LambdaMethodHandler {
 
         try {
             final DecodedJWT decodedJWT = validateToken(authorization, poolId);
-            System.out.println("Username is: " + decodedJWT.getClaim("cognito:username"));
-            System.out.println("Email is: " + decodedJWT.getClaim("email"));
+            System.out.println("ID Token Username is: " + decodedJWT.getClaim("cognito:username"));
+            System.out.println("ID Token Email is: " + decodedJWT.getClaim("email"));
+            System.out.println("Access Token Username is: " + decodedJWT.getClaim("username"));
         } catch (final JwkException exception) {
             System.out.println("Authorization header was missing, invalid, or could not be verified");
         }
