@@ -8,14 +8,19 @@ public class ProxyResponse {
     public final String body;
     public final Map<String, String> headers;
 
-    public ProxyResponse(final String statusCode, final String body, final Map<String, String> headers) {
+    public ProxyResponse(
+            final String statusCode,
+            final String body,
+            final Map<String, String> headers) {
         this.headers = headers == null ? new HashMap<>() : headers;
         this.body = body;
         this.statusCode = statusCode;
         addCORSHeaders();
     }
 
-    public ProxyResponse(final String statusCode, final String body) {
+    public ProxyResponse(
+            final String statusCode,
+            final String body) {
         this.headers = new HashMap<>();
         this.body = body;
         this.statusCode = statusCode;

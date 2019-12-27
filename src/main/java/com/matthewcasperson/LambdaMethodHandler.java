@@ -6,7 +6,11 @@ import com.google.gson.Gson;
 import java.util.Map;
 
 public class LambdaMethodHandler {
-    public ProxyResponse handleRequest(final Map<String,Object> input, final Context context) {
-        return new ProxyResponse("200", new Gson().toJson(input));
+    public ProxyResponse handleRequest(
+            final Map<String,Object> input,
+            final Context context) {
+        return new ProxyResponse(
+                "200",
+                new Gson().toJson(input));
     }
 }
